@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Avenza – Log in</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <section id="login" class="on auth flip" aria-label="Log in">
+
+    <!-- Log in form -->
+    <form novalidate data-form="login">
+
+      <div class="av">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="8" r="4.5" />
+          <path d="M3.5 21c.6-4.6 4-7 8.5-7s7.900 2.400 8.500 7z" />
+        </svg>
+      </div>
+
+      <h1>Log in</h1>
+
+      <div class="f">
+        <label for="u">Username or email</label>
+        <input
+          id="u"
+          type="text"
+          name="user"
+          autocomplete="username"
+          placeholder="Username or email"
+          required>
+      </div>
+
+      <div class="f">
+        <label for="lp">Password</label>
+        <input
+          id="lp"
+          type="password"
+          name="pw"
+          autocomplete="current-password"
+          placeholder="Password"
+          required>
+      </div>
+
+      <div class="row">
+        <label>
+          <input type="checkbox"> Remember me
+        </label>
+        <a data-go="forgot" tabindex="0" role="link">Forgot password?</a>
+      </div>
+
+      <p class="err" role="alert"></p>
+
+      <button type="submit">Log in</button>
+      <button type="button" class="alt" data-go="signup">Create an account</button>
+
+      <button type="button" class="g" data-go="google">
+        <svg viewBox="0 0 48 48">
+          <path fill="#EA4335"
+            d="M24 9.500c3.500 0 6.600 1.200 9.100 3.500l6.800-6.800C35.800 2.400 30.300 0 24 0 14.600 0 6.500 5.400 2.600 13.200l7.900 6.100C12.400 13.600 17.700 9.500 24 9.500z" />
+          <path fill="#4285F4"
+            d="M46.500 24.500c0-1.600-.1-3.100-.4-4.500H24v9h12.700c-.6 3-2.300 5.500-4.800 7.200l7.600 5.900c4.400-4.100 7-10.100 7-17.600z" />
+          <path fill="#FBBC05"
+            d="M10.500 28.700A14.500 14.500 0 0 1 9.500 24c0-1.600.3-3.200.8-4.700l-7.900-6.100A24 24 0 0 0 0 24c0 3.900.9 7.500 2.600 10.800l7.900-6.100z" />
+          <path fill="#34A853"
+            d="M24 48c6.500 0 11.900-2.100 15.900-5.800l-7.600-5.900c-2.100 1.400-4.900 2.300-8.300 2.300-6.300 0-11.600-4.100-13.500-9.800l-7.900 6.100C6.500 42.600 14.600 48 24 48z" />
+        </svg>
+        Continue with Google
+      </button>
+
+    </form>
+
+    <!-- Welcome panel -->
+    <div class="panel">
+      <img class="logo" alt="Avenza" src="logo.png">
+      <h2>Welcome back!</h2>
+    </div>
+
+  </section>
+
+  <div class="ok" id="toast" role="status"></div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

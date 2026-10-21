@@ -1,0 +1,398 @@
+/* ==========================================================
+   AVENZA – Shared styles (one light theme, same background)
+   ========================================================== */
+
+/* ---------- Theme variables ---------- */
+:root {
+  --ink: #2a1f5c;
+  --brand: #5e3fc4;
+  --brand2: #7c5ce6;
+  --field: #b9c9f5;
+  --muted: #5b5585;
+  --btn: #5ecbf7;      /* light blue buttons on the loading screen */
+
+  /* Shared background: white glow, blue edges, purple corners */
+  --glow:
+    radial-gradient(ellipse 60% 55% at 50% 38%, #f1f8ff 0%, #dcebfd 45%, transparent 100%),
+    radial-gradient(circle at 100% 0%, #b9a6fc 0%, transparent 42%),
+    radial-gradient(circle at 100% 100%, #a67ffb 0%, transparent 40%),
+    radial-gradient(circle at 0% 0%, #84b0fd 0%, transparent 45%),
+    radial-gradient(ellipse 50% 40% at 62% 100%, #7ea6fb 0%, transparent 100%),
+    #b7cffb;
+
+  color-scheme: light;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+
+/* ---------- Base ---------- */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: Montserrat, system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--glow);
+  background-attachment: fixed;
+  display: grid;
+  place-items: center;
+}
+
+a {
+  color: var(--brand);
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+/* ---------- Logo ---------- */
+.logo {
+  display: block;
+  height: auto;
+  mix-blend-mode: multiply;   /* hides the white box around the logo image */
+}
+
+
+/* ---------- Page card (section) ---------- */
+section {
+  display: none;
+  width: min(960px, 94vw);
+  min-height: min(560px, 88vh);
+  border-radius: 28px;
+  overflow: hidden;
+  position: relative;
+}
+
+section.on {
+  display: grid;
+}
+
+
+/* ---------- Loading / splash screen (full screen) ---------- */
+.splash {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  border-radius: 0;
+  padding: 12vh 24px 8vh;
+  background: var(--glow);
+  box-shadow: inset 0 0 0 3px #8b5cf6;   /* purple frame like the design */
+}
+
+.splash.on {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.splash .logo {
+  width: min(560px, 86vw);
+}
+
+/* Tagline sits under the "Avenza" wordmark */
+.tag {
+  width: min(560px, 86vw);
+  margin: -6px 0 0;
+  padding-left: calc(min(560px, 86vw) * 0.32);
+  color: #14122b;
+  font-size: clamp(.95rem, 2.2vw, 1.1rem);
+  font-weight: 500;
+  letter-spacing: .01em;
+  text-align: left;
+}
+
+/* Progress bar and buttons both sit at the bottom */
+.bar {
+  width: min(260px, 70vw);
+  height: 6px;
+  margin-top: auto;
+  margin-bottom: 4vh;
+  border-radius: 9px;
+  background: #ffffffa6;
+  overflow: hidden;
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #3fc1d9, var(--brand2));
+  border-radius: 9px;
+  transition: width .12s linear;
+}
+
+.actions {
+  display: none;
+  gap: 10px;
+  width: min(180px, 70vw);
+  margin-top: auto;
+}
+
+.splash.ready .bar {
+  display: none;
+}
+
+.splash.ready .actions {
+  display: grid;
+}
+
+/* Loading screen buttons: light blue with dark text */
+.splash button,
+.splash button.alt {
+  background: var(--btn);
+  color: #0d0d14;
+  box-shadow: none;
+  font-weight: 700;
+  padding: 14px 20px;
+}
+
+
+/* ---------- Buttons ---------- */
+button,
+.btn {
+  font: inherit;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(90deg, #3fb6e0, var(--brand2));
+  border: 0;
+  border-radius: 999px;
+  padding: 13px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+
+button:hover {
+  filter: brightness(1.06);
+}
+
+button.alt {
+  background: #ffffffb3;
+  color: var(--brand);
+  box-shadow: inset 0 0 0 2px var(--brand2);
+}
+
+/* Google button */
+.g {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #fff;
+  color: #3c4043;
+  box-shadow: inset 0 0 0 1px #dadce0;
+}
+
+.g svg {
+  width: 18px;
+}
+
+/* Keyboard focus */
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 2px;
+}
+
+
+/* ---------- Auth layout (sign up / log in) ---------- */
+/* No separate colors: the page background shows through everywhere */
+.auth {
+  grid-template-columns: 1fr 1fr;
+  background: transparent;
+  box-shadow: none;
+}
+
+.auth.flip .panel {
+  order: 2;
+}
+
+/* Side panel with logo and welcome text */
+.panel {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 18px;
+  padding: 36px;
+  text-align: center;
+  background: transparent;
+}
+
+.panel .logo {
+  width: min(300px, 100%);
+}
+
+.panel h2 {
+  margin: 0;
+  font-size: clamp(1.5rem, 3.4vw, 2.2rem);
+  line-height: 1.15;
+  color: var(--brand);
+  font-weight: 800;
+}
+
+
+/* ---------- Forms ---------- */
+form {
+  display: grid;
+  align-content: center;
+  gap: 14px;
+  padding: 36px clamp(20px, 5vw, 56px);
+}
+
+form h1 {
+  margin: 0 0 4px;
+  text-align: center;
+  font-size: 1.3rem;
+  color: var(--brand);
+  font-weight: 800;
+}
+
+/* Avatar icon */
+.av {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  margin: 0 auto 4px;
+  background: linear-gradient(160deg, #4aa9e8, var(--brand2));
+  display: grid;
+  place-items: center;
+}
+
+.av svg {
+  width: 42px;
+  fill: #fff;
+}
+
+/* Field group */
+.f {
+  display: grid;
+  gap: 5px;
+}
+
+.f label {
+  font-size: .8rem;
+  font-weight: 600;
+  padding-left: 14px;
+}
+
+input[type=text],
+input[type=email],
+input[type=password] {
+  font: inherit;
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background: var(--field);
+  color: var(--ink);
+}
+
+input::placeholder {
+  color: var(--muted);
+}
+
+input[aria-invalid=true] {
+  border-color: #d6336c;
+}
+
+/* Error message */
+.err {
+  color: #d6336c;
+  font-size: .8rem;
+  min-height: 1em;
+  padding-left: 14px;
+  margin: 0;
+}
+
+/* Remember me / forgot password row */
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: .82rem;
+}
+
+.row label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* "Already have an account?" text */
+.sw {
+  text-align: center;
+  font-size: .85rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+
+/* ---------- Toast message ---------- */
+.ok {
+  position: fixed;
+  left: 50%;
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  transform: translate(-50%, 30px);
+  opacity: 0;
+  background: var(--brand);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: .25s;
+  pointer-events: none;
+}
+
+.ok.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+
+/* ---------- Mobile ---------- */
+@media (max-width: 720px) {
+  .auth {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    padding: 22px;
+    order: -1 !important;
+  }
+
+  .panel h2 {
+    font-size: 1.3rem;
+  }
+
+  .panel .logo {
+    width: 150px;
+  }
+}
+
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <title>Avenza – Welcome</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Welcome / Splash Screen -->
+    <section id="splash" class="splash on" aria-label="Avenza Welcome">
+
+        <!-- Logo -->
+        <img
+            class="logo"
+            src="logo.png"
+            alt="Avenza Logo"
+        >
+
+        <!-- Tagline -->
+        <p class="tag">Your Future, Our Support</p>
+
+        <!-- Loading Progress Bar -->
+        <div
+            class="bar"
+            role="progressbar"
+            aria-label="Loading"
+        >
+            <i id="fill"></i>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="actions">
+            <button type="button" data-go="signup">
+                Get started
+            </button>
+
+            <button type="button" class="alt" data-go="login">
+                Log in
+            </button>
+        </div>
+
+    </section>
+
+    <!-- Notification / Toast -->
+    <div
+        class="ok"
+        id="toast"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
